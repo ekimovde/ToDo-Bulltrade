@@ -12,14 +12,15 @@
 </template>
 
 <script>
-  import { defineComponent } from 'vue'
+  import { defineComponent } from 'vue';
 
   export const UiButtonView = {
     default: 'default',
     extra: 'extra'
-  }
+  };
 
   export default defineComponent({
+    name: 'ui-button',
     props: {
       view: {
         type: String,
@@ -34,7 +35,7 @@
     setup() {
       //
     }
-  })
+  });
 </script>
 
 <style scoped lang="scss">

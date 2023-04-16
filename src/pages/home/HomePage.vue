@@ -12,7 +12,7 @@
       :disabled="false"
       :animation="0"
       group="description"
-      ghostClass="ghost"
+      ghost-class="ghost"
       class="home-page__list"
     >
       <transition-group
@@ -32,26 +32,26 @@
 </template>
 
 <script setup>
-  import { computed } from 'vue'
-  import { useStore } from 'vuex'
+  import { computed } from 'vue';
+  import { useStore } from 'vuex';
 
-  import TaskForm from '@components/task/TaskForm.vue'
-  import TaskCard from '@components/task/TaskCard.vue'
-  import { VueDraggableNext } from 'vue-draggable-next'
+  import TaskForm from '@components/task/TaskForm.vue';
+  import TaskCard from '@components/task/TaskCard.vue';
+  import { VueDraggableNext } from 'vue-draggable-next';
 
-  const store = useStore()
+  const store = useStore();
 
   const formTask = {
     id: null,
     name: '',
     description: '',
     isCompleted: false
-  }
+  };
 
   const tasks = computed({
     get: () => store.getters['tasks/tasks'],
     set: (value) => store.commit('tasks/swapTasks', value)
-  })
+  });
 </script>
 
 <style scoped lang="scss">

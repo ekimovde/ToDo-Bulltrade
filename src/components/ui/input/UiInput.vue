@@ -9,14 +9,15 @@
       placeholder="Введите что-нибудь..."
       :value="modelValue"
       @input="updateValue"
-    />
+    >
   </div>
 </template>
 
 <script>
-  import { defineComponent } from 'vue'
+  import { defineComponent } from 'vue';
 
   export default defineComponent({
+    name: 'ui-input',
     props: {
       label: {
         type: String,
@@ -29,14 +30,14 @@
     },
     setup(_, { emit }) {
       const updateValue = (event) => {
-        emit('update:modelValue', event.target.value)
-      }
+        emit('update:modelValue', event.target.value);
+      };
 
       return {
         updateValue
-      }
+      };
     }
-  })
+  });
 </script>
 
 <style scoped lang="scss">

@@ -1,7 +1,7 @@
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import sass from 'sass'
-import path from 'path'
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+import sass from 'sass';
+import path from 'path';
 
 export default defineConfig({
   plugins: [vue()],
@@ -20,4 +20,4 @@ export default defineConfig({
       '@pages': path.resolve(__dirname, 'src/pages')
     }
   }
-})
+});

@@ -1,60 +1,60 @@
 const state = {
   tasks: []
-}
+};
 
 const getters = {
-  tasks(state) {
-    return state.tasks
+  tasks(store) {
+    return store.tasks;
   }
-}
+};
 
 const mutations = {
-  addTask(state, task) {
-    state.tasks.push(task)
+  addTask(store, task) {
+    store.tasks.push(task);
   },
 
-  removeTask(state, taskId) {
-    state.tasks = state.tasks.filter(task => task.id !== taskId)
+  removeTask(store, taskId) {
+    store.tasks = store.tasks.filter(task => task.id !== taskId);
   },
 
-  toggleTaskStatus(state, taskId) {
-    const task = state.tasks.find(task => task.id === taskId)
+  toggleTaskStatus(store, taskId) {
+    const currentTask = store.tasks.find(task => task.id === taskId);
 
-    task.isCompleted = !task.isCompleted
+    currentTask.isCompleted = !currentTask.isCompleted;
   },
 
-  updateTask(state, task) {
-    const index = state.tasks.findIndex(item => item.id === task.id)
+  updateTask(store, task) {
+    const index = store.tasks.findIndex(item => item.id === task.id);
 
-    state.tasks.splice(index, 1, task)
+    store.tasks.splice(index, 1, task);
   },
 
-  swapTasks(state, tasks) {
-    state.tasks = tasks
+  swapTasks(store, tasks) {
+    store.tasks = tasks;
   }
-}
+};
 
 const actions = {
   addTask({ commit }, task) {
-    commit('addTask', task)
+    commit('addTask', task);
   },
 
   removeTask({ commit }, taskId) {
-    commit('removeTask', taskId)
+    commit('removeTask', taskId);
   },
 
   toggleTaskStatus({ commit }, taskId) {
-    commit('toggleTaskStatus', taskId)
+    commit('toggleTaskStatus', taskId);
   },
 
   updateTask({ commit }, task) {
-    commit('updateTask', task)
+    commit('updateTask', task);
   },
 
   swapTasks({ commit }, tasks) {
-    commit('swapTasks', tasks)
+    commit('swapTasks', tasks);
   }
-}
+};
 
 export default {
   namespaced: true,
@@ -62,4 +62,4 @@ export default {
   getters,
   mutations,
   actions
-}
+};

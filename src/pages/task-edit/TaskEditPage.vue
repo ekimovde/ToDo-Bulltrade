@@ -14,37 +14,37 @@
 </template>
 
 <script setup>
-  import { useRoute, useRouter } from 'vue-router'
-  import { onMounted, ref } from 'vue'
-  import { useStore } from 'vuex'
+  import { useRoute, useRouter } from 'vue-router';
+  import { onMounted, ref } from 'vue';
+  import { useStore } from 'vuex';
 
-  import TaskForm from '@components/task/TaskForm.vue'
+  import TaskForm from '@components/task/TaskForm.vue';
 
-  const route = useRoute()
-  const router = useRouter()
-  const store = useStore()
+  const route = useRoute();
+  const router = useRouter();
+  const store = useStore();
 
-  let currentTask = ref(null);
-
-  onMounted(() => {
-    getTaskById(route.params.taskId)
-  })
+  const currentTask = ref(null);
 
   const getTaskById = (taskId) => {
-    const task = store.getters['tasks/tasks'].find(item => item.id === taskId)
+    const task = store.getters['tasks/tasks'].find(item => item.id === taskId);
 
     if (!task) {
-      router.push({ name: 'home' })
+      router.push({ name: 'home' });
 
-      return
+      return;
     }
 
-    currentTask.value = task
-  }
+    currentTask.value = task;
+  };
 
   const goToHomePage = () => {
-    router.push({ name: 'home' })
-  }
+    router.push({ name: 'home' });
+  };
+
+  onMounted(() => {
+    getTaskById(route.params.taskId);
+  });
 </script>
 
 <style scoped lang="scss">

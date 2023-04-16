@@ -26,19 +26,20 @@
       </div>
 
       <router-link :to="{ name: 'task-edit', params: { taskId: task.id } }">
-        <i class='task-card__icon bx bx-right-arrow-circle' />
+        <i class="task-card__icon bx bx-right-arrow-circle" />
       </router-link>
     </div>
   </div>
 </template>
 
 <script>
-  import { defineComponent, computed } from 'vue'
-  import { useStore } from 'vuex'
+  import { defineComponent, computed } from 'vue';
+  import { useStore } from 'vuex';
 
-  import UiButton, { UiButtonView } from '@components/ui/button/UiButton.vue'
+  import UiButton, { UiButtonView } from '@components/ui/button/UiButton.vue';
 
   export default defineComponent({
+    name: 'task-card',
     components: {
       UiButton
     },
@@ -46,30 +47,30 @@
       task: {
         type: Object,
         default: () => ({})
-      },
+      }
     },
     setup(props) {
-      const DEFAULT_MAX_LENGTH_OF_TEXT = 50
-      const store = useStore()
+      const DEFAULT_MAX_LENGTH_OF_TEXT = 50;
+      const store = useStore();
 
-      const isTruncatedDescription = computed(() => props.task.description.length > DEFAULT_MAX_LENGTH_OF_TEXT)
+      const isTruncatedDescription = computed(() => props.task.description.length > DEFAULT_MAX_LENGTH_OF_TEXT);
 
-      const textStyles = computed(() => props.task.isCompleted ? 'task-card__text--is-throughed' : '')
+      const textStyles = computed(() => (props.task.isCompleted ? 'task-card__text--is-throughed' : ''));
       const truncatedDescription = computed(() => {
-        const { description } = props.task
+        const { description } = props.task;
 
         return isTruncatedDescription.value
           ? `${description.substring(0, DEFAULT_MAX_LENGTH_OF_TEXT)}...`
-          : description
-      })
+          : description;
+      });
 
       const toggleTaskStatus = () => {
-        store.dispatch('tasks/toggleTaskStatus', props.task.id)
-      }
+        store.dispatch('tasks/toggleTaskStatus', props.task.id);
+      };
 
       const removeTask = () => {
-        store.dispatch('tasks/removeTask', props.task.id)
-      }
+        store.dispatch('tasks/removeTask', props.task.id);
+      };
 
       return {
         textStyles,
@@ -78,9 +79,9 @@
 
         toggleTaskStatus,
         removeTask
-      }
+      };
     }
-  })
+  });
 </script>
 
 <style scoped lang="scss">
