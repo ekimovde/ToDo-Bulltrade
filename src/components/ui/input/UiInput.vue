@@ -28,6 +28,7 @@
         default: ''
       }
     },
+    emits: ['update:modelValue'],
     setup(_, { emit }) {
       const updateValue = (event) => {
         emit('update:modelValue', event.target.value);

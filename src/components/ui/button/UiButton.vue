@@ -6,6 +6,7 @@
       'ui-button--disabled': isDisabled
     }"
     :disabled="isDisabled"
+    @click="onClick"
   >
     <slot />
   </button>
@@ -32,8 +33,15 @@
         default: false
       }
     },
-    setup() {
-      //
+    emits: ['click'],
+    setup(_, { emit }) {
+      const onClick = () => {
+        emit('click');
+      };
+
+      return {
+        onClick
+      };
     }
   });
 </script>
